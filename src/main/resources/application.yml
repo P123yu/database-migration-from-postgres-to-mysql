@@ -1,22 +1,21 @@
+
 spring:
+  # 1. Primary DB (PostgreSQL) - Source Data & Batch Metadata
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_batch
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  # 2. Secondary DB (MySQL) - Target Data
+  datasource-mysql:
+    url: jdbc:mysql://localhost:3306/target_db
+    username: root
+    password: Piyush@l1 # Change this to your MySQL password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   batch:
     job:
-      enabled: false
+      enabled: false # We run jobs manually via Controller
     jdbc:
       initialize-schema: always
-  application:
-    name: spring.batch.demo
-  datasource:
-    url: jdbc:postgresql://localhost:5432/springsecurity
-    username:
-    password:
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        format-sql: true
-      show-sql: true
-      database: postgresql
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
